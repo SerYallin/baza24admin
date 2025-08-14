@@ -1,0 +1,12 @@
+diff --git a/node_modules/@adminjs/sequelize/package.json b/node_modules/@adminjs/sequelize/package.json
+index 7007a5f..b841b53 100644
+--- a/node_modules/@adminjs/sequelize/package.json
++++ b/node_modules/@adminjs/sequelize/package.json
+@@ -6,6 +6,7 @@
+   "exports": {
+     ".": {
+       "import": "./lib/index.js",
++      "require": "./lib/index.js",
+       "types": "./lib/index.d.ts"
+     }
+   },
