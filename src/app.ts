@@ -3,6 +3,8 @@ import { buildAuthenticatedRouter } from '@adminjs/express';
 import * as AdminJSSequelize from '@adminjs/sequelize';
 import express from 'express';
 
+import 'module-alias/register';
+
 import { requestLogger, errorLogger } from '@middlewares/logger';
 import { authOptions, options, sessionOptions } from '@admin/options';
 import { authentificate } from '@admin/authentificate';
