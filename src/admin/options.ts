@@ -1,4 +1,3 @@
-import { ResourceWithOptions } from 'adminjs';
 import { AuthenticationOptions } from '@adminjs/express';
 
 import componentLoader, { Components } from './component-loader';
@@ -20,12 +19,7 @@ export const options = {
   logoutPath: '/logout',
   loginPath: '/login',
   refreshTokenPath: '/refresh-token',
-  resources: [
-    usersResource,
-    rolesResource,
-    productsResource,
-    ImagesResource
-  ] as ResourceWithOptions[],
+  resources: [usersResource, rolesResource, productsResource, ImagesResource],
   databases: [],
   locale: {
     language: 'ru',
