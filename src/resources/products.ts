@@ -1,5 +1,4 @@
 import { ResourceWithOptions } from 'adminjs';
-import { Folder } from 'react-feather';
 
 import { Product } from '@entities/product';
 import { Components } from '@admin/component-loader';

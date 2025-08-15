@@ -1,6 +1,7 @@
 import React from 'react';
 import { DropZone, Label } from '@adminjs/design-system';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const uploadField: React.FC = (props: any) => {
   const { property } = props;
   return (

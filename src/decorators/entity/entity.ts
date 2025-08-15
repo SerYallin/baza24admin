@@ -23,10 +23,10 @@ function Entity<T extends ModelStatic<Model>>(options: ModelOptions) {
   // eslint-disable-next-line func-names
   return function (target: T) {
     const attributes = Object.getOwnPropertyDescriptor(target, 'tmpAttributes');
-
     // Run the model init method for attributes and options.
     target.init(attributes?.value ?? {}, {
       sequelize,
+
       ...options,
     });
   };

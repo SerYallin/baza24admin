@@ -5,11 +5,12 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/app.ts",
-    "test": "test",
-    "start": "node dist/app",
+    "start": "node -r tsconfig-paths/register dist/app",
     "build": "tsc",
     "lint": "eslint src/**",
-    "postinstall": "patch-package"
+    "lint:fix": "eslint --fix src/**",
+    "postinstall": "patch-package",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -49,10 +50,15 @@
     "express": "^5.1.0",
     "globals": "^16.3.0",
     "jest": "^30.0.5",
+    "jest-css-modules-transform": "^4.4.2",
+    "jest-environment-jsdom": "^30.0.5",
+    "node-mocks-http": "^1.17.2",
     "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.6.2",
     "stylelint": "^16.23.1",
+    "supertest": "^7.1.4",
+    "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tslib": "^2.8.1",
@@ -68,21 +74,9 @@
     "express-session": "^1.18.2",
     "express-winston": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
-    "module-alias": "^2.2.3",
     "pg": "^8.16.3",
     "sass": "^1.90.0",
     "sequelize": "^6.37.7",
     "winston": "^3.17.0"
-  },
-  "_moduleAliases": {
-    "@app": "dist",
-    "@middlewares": "dist/middlewares",
-    "@components": "dist/components",
-    "@locales": "dist/locales",
-    "@entities": "dist/entities",
-    "@resources": "dist/resources",
-    "@admin": "dist/admin",
-    "@utils": "dist/utils",
-    "@db": "dist/db"
   }
 }

@@ -1,0 +1,51 @@
+name: CI/CD Buld and Start test
+
+on:
+  push:
+
+jobs:
+  build-and-start:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run build script
+        run: npm run build
+
+      - name: Check if start script is correct
+        run: |
+          npm run start > app.log 2>&1 &
+          START_PID=$! &
+          sleep 10
+          if ps -p $START_PID > /dev/null; then
+            echo "Application is running successfully"
+            if grep -i "error" app.log > /dev/null; then
+              echo "Application is running with error" >&2
+              pkill -f "npm run start"
+              exit 1
+            else
+              echo "No error found"
+            fi
+          else
+            wait $START_PID
+            EXIT_CODE=$?
+            echo "Application exited with code $EXIT_CODE" >&2
+            exit $EXIT_CODE 
+          fi
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
+

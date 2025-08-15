@@ -3,10 +3,8 @@ import { buildAuthenticatedRouter } from '@adminjs/express';
 import * as AdminJSSequelize from '@adminjs/sequelize';
 import express from 'express';
 
-import 'module-alias/register';
-
 import { requestLogger, errorLogger } from '@middlewares/logger';
-import { authOptions, options, sessionOptions } from '@admin/options';
+import { authOptions, sessionOptions, options } from '@admin/options';
 import { authentificate } from '@admin/authentificate';
 
 AdminJS.registerAdapter({
@@ -18,7 +16,6 @@ const app = express();
 
 const start = async () => {
   app.use(requestLogger);
-
   const admin = new AdminJS(options);
 
   if (process.env.NODE_ENV === 'production') {
@@ -39,7 +36,10 @@ const start = async () => {
   const PORT = process.env.PORT || 3000;
   app.use(errorLogger);
   app.listen(PORT, () => {
-    console.info(`Server running at d http://localhost:${PORT}`);
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.info(`Server running at d http://localhost:${PORT}`);
+    }
   });
 };
 
