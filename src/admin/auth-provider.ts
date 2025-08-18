@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 
 import componentLoader from './component-loader';
 
-import { User } from '@entities/user';
+import { UserModel } from '@entities/user';
 
 /**
  * Make sure to modify "authenticate" to be a proper authentication method
@@ -11,7 +11,7 @@ import { User } from '@entities/user';
 const provider = new DefaultAuthProvider({
   componentLoader,
   authenticate: async ({ email, password }) =>
-    User.findOne({
+    UserModel.findOne({
       where: { email },
       attributes: { include: ['password'] },
     })
@@ -19,7 +19,7 @@ const provider = new DefaultAuthProvider({
         if (!user) {
           throw new Error('User with this email or password does not exist.');
         }
-        if (!bcrypt.compareSync(password, user.get('password') as string)) {
+        if (!bcrypt.compareSync(password, user.get('password'))) {
           throw new Error('User with this email or password does not exist.');
         }
         return { email, role: user.get('role') };

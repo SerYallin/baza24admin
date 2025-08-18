@@ -85,4 +85,4 @@ export class Product extends Model<IProduct, ProductCreationAttributes> {
   declare updatedAt: Date;
 }
 
-Product.sync({ force: true });
+// Product.sync({ force: true });

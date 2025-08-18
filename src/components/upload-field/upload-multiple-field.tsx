@@ -1,14 +1,17 @@
 import React from 'react';
 import { DropZone, Label } from '@adminjs/design-system';
 
-export const uploadMultipleField: React.FC = (props) => {
-  console.log({ props });
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const uploadMultipleField: React.FC = (props: any) => {
+  const { property } = props;
+  const onChange = () => {};
   return (
     <>
       <Label required label="Upload">
-        Images
+        {property.label ?? 'Images'}
       </Label>
       <DropZone
+        onChange={onChange}
         translations={{
           acceptedSize: 'Max size: {{maxSize}}',
           acceptedType: 'Supports: {{mimeTypes}}',

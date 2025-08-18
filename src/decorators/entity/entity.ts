@@ -20,13 +20,12 @@ import { sequelize } from '@db/sequelize';
  *   Sequelize model options for the entity.
  */
 function Entity<T extends ModelStatic<Model>>(options: ModelOptions) {
-  // eslint-disable-next-line func-names
   return function (target: T) {
     const attributes = Object.getOwnPropertyDescriptor(target, 'tmpAttributes');
-
     // Run the model init method for attributes and options.
     target.init(attributes?.value ?? {}, {
       sequelize,
+
       ...options,
     });
   };
@@ -40,7 +39,6 @@ function Entity<T extends ModelStatic<Model>>(options: ModelOptions) {
  *   validation and abilities.
  */
 function EntityField<T extends Model>(options: ModelAttributeColumnOptions) {
-  // eslint-disable-next-line func-names
   return function (target: T, key: string) {
     // If tmpAttributes is not defined, create it
     if (!Object.hasOwnProperty.call(target.constructor, 'tmpAttributes')) {
@@ -53,7 +51,7 @@ function EntityField<T extends Model>(options: ModelAttributeColumnOptions) {
     }
     const attributes = Object.getOwnPropertyDescriptor(
       target.constructor,
-      'tmpAttributes'
+      'tmpAttributes',
     );
     Object.assign(attributes?.value, { [key]: options });
   };

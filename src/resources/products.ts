@@ -1,10 +1,8 @@
 import { ResourceWithOptions } from 'adminjs';
-import { Folder } from 'react-feather';
 
 import { Product } from '@entities/product';
 import { Components } from '@admin/component-loader';
 
-// @ts-ignore
 const products: ResourceWithOptions = {
   resource: Product,
   options: {
