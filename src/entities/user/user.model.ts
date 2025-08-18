@@ -12,7 +12,7 @@ import { IUser } from './types';
 })
 export class UserModel extends Model<IUser> {
   @Column
-  token: string;
+  name: string;
 
   @IsEmail
   @Column

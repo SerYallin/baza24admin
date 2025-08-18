@@ -86,6 +86,7 @@ export default tseslint.config(
             ['@middlewares', './src/middlewares'],
             ['@utils', './src/utils'],
             ['@db', './src/db'],
+            ['@modules', './src/modules'],
           ],
         },
         typescript: {
