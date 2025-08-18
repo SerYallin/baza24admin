@@ -1,10 +1,10 @@
 import { ResourceWithOptions } from 'adminjs';
 
-import { User } from '@entities/user';
+import { UserModel } from '@entities/user';
 import { Components } from '@admin/component-loader';
 
 const users: ResourceWithOptions = {
-  resource: User,
+  resource: UserModel,
   options: {
     navigation: {
       name: 'Administration',

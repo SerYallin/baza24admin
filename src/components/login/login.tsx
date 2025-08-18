@@ -21,7 +21,6 @@ const Form = styled.form`
   min-width: 320px;
 `;
 const Login: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { __APP_STATE__: props } = window as any & {
     __APP_STATE__: { errorMessage?: string | null; action?: string | null };
   };

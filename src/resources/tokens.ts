@@ -1,30 +1,30 @@
 import { ResourceWithOptions } from 'adminjs';
 
-import { UserRoles } from '@entities/user-roles';
+import { TokensModel } from '@entities/tokens';
 
-const roles: ResourceWithOptions = {
-  resource: UserRoles,
+const tokens: ResourceWithOptions = {
+  resource: TokensModel,
   options: {
-    id: 'roles',
+    id: 'tokens',
     navigation: {
       name: 'Administration',
-      icon: 'User',
     },
     properties: {
       id: {
         type: 'number',
         isVisible: { list: true, filter: false, show: true, edit: false },
       },
-      name: {
+      token: {
         type: 'string',
         isVisible: { list: true, filter: true, show: true, edit: true },
       },
-      slug: {
-        type: 'string',
+      user_id: {
+        type: 'number',
         isVisible: { list: true, filter: true, show: true, edit: true },
+        reference: 'users',
       },
     },
-    listProperties: ['id', 'name', 'slug'],
+    listProperties: ['id', 'token', 'user_id'],
     actions: {
       list: {
         isAccessible: (currentAdmin) => currentAdmin.currentAdmin?.role === 1,
@@ -36,7 +36,7 @@ const roles: ResourceWithOptions = {
         isAccessible: (currentAdmin) => currentAdmin.currentAdmin?.role === 1,
       },
       new: {
-        isAccessible: (currentAdmin) => currentAdmin.currentAdmin?.role === 1,
+        isAccessible: () => false,
       },
       delete: {
         isAccessible: (currentAdmin) => currentAdmin.currentAdmin?.role === 1,
@@ -51,4 +51,4 @@ const roles: ResourceWithOptions = {
   },
 };
 
-export default roles;
+export default tokens;
