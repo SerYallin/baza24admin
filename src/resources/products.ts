@@ -3,7 +3,6 @@ import { ResourceWithOptions } from 'adminjs';
 import { Product } from '@entities/product';
 import { Components } from '@admin/component-loader';
 
-// @ts-ignore
 const products: ResourceWithOptions = {
   resource: Product,
   options: {

@@ -3,7 +3,6 @@ import { DataTypes, Model } from 'sequelize';
 import { IUserRoles, TUserRolesAttributes } from './types';
 
 import { Entity, EntityField } from '@app/decorators/entity';
-import { User } from '@entities/user';
 
 @Entity({
   tableName: 'roles',
@@ -33,8 +32,3 @@ export class UserRoles extends Model<IUserRoles, TUserRolesAttributes> {
   })
   declare slug: string;
 }
-
-UserRoles.hasMany(User, { foreignKey: 'role' });
-User.belongsTo(UserRoles, { foreignKey: 'role' });
-
-// User.sync();

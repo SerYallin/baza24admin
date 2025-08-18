@@ -1,11 +1,10 @@
-import { AuthenticationOptions } from '@adminjs/express';
-
 import componentLoader, { Components } from './component-loader';
 
 import usersResource from '@resources/users';
 import rolesResource from '@resources/roles';
 import productsResource from '@resources/products';
 import ImagesResource from '@resources/images';
+import TokensResource from '@resources/tokens';
 import { ruRu } from '@locales/ruRu';
 import { esEs } from '@locales/esEs';
 import provider from '@admin/auth-provider';
@@ -19,7 +18,13 @@ export const options = {
   logoutPath: '/logout',
   loginPath: '/login',
   refreshTokenPath: '/refresh-token',
-  resources: [usersResource, rolesResource, productsResource, ImagesResource],
+  resources: [
+    usersResource,
+    rolesResource,
+    productsResource,
+    ImagesResource,
+    TokensResource,
+  ],
   databases: [],
   locale: {
     language: 'ru',
@@ -33,7 +38,7 @@ export const options = {
   },
 };
 
-export const authOptions: AuthenticationOptions = {
+export const authOptions = {
   cookiePassword: '1234567890',
   cookieName: 'baza24a',
   provider,
