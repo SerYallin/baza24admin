@@ -1,98 +1,105 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Baza24 - Administration Panel
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![Java](https://img.shields.io/badge/Java-8+-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+![Spring](https://img.shields.io/badge/Spring-MVC-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-5.2.1-59666C?style=for-the-badge&logo=hibernate&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Baza24 Admin is a web-based administration dashboard for the Baza24 application. It provides a secure and centralized interface for administrators to manage the platform's core functionalities.
 
-## Description
+The application is built on a robust Java-based stack, utilizing Spring MVC for handling web requests, Hibernate for object-relational mapping (ORM), and JSP for rendering dynamic frontend pages.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## ✨ Features
 
-## Project setup
+Based on the current project structure, the key features are:
 
-```bash
-$ npm install
+* **Secure Admin Authentication**: A dedicated login system for administrators to securely access the panel.
+* **Central Dashboard**: After login, administrators are directed to a central dashboard which serves as the main hub for all management tasks.
+* **Extensible Architecture**: The project is structured with clear separation of concerns (Controller, Service, DAO layers), making it easy to add new management modules in the future (e.g., User Management, Product Management, etc.).
+
+## 🛠️ Technology Stack
+
+* **Backend**: Java 8
+* **Framework**: Spring MVC 4.3.9
+* **ORM**: Hibernate 5.2.1
+* **Database**: MySQL
+* **Frontend**: JSP (JavaServer Pages), JSTL
+* **Build & Dependency Management**: Apache Maven
+* **Logging**: Apache Log4j
+* **Web Server**: Apache Tomcat (or any other Servlet Container)
+
+## 🚀 Getting Started
+
+Follow these instructions to get the project up and running on your local machine.
+
+### Prerequisites
+
+* Java Development Kit (JDK) 8 or newer
+* Apache Maven 3.x
+* MySQL Server 5.x or newer
+* Apache Tomcat 9 or newer
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Akhilanandateja/baza24admin.git](https://github.com/Akhilanandateja/baza24admin.git)
+    cd baza24admin
+    ```
+
+2.  **Database Setup:**
+    * Connect to your MySQL server and create a new database for the project.
+        ```sql
+        CREATE DATABASE baza24_db;
+        ```
+    * The project uses Hibernate's `hbm2ddl.auto` property set to `update`, which will automatically create the necessary tables (`Admin`) based on the entity classes when the application starts.
+
+3.  **Configure Database Connection:**
+    * Open the Hibernate configuration file located at: `src/main/resources/hibernate.cfg.xml`.
+    * Update the database connection properties with your MySQL credentials:
+        ```xml
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/baza24_db</property>
+        <property name="connection.username">your_mysql_username</property>
+        <property name="connection.password">your_mysql_password</property>
+        ```
+
+4.  **Build the Project:**
+    * Use Maven to compile the project and create a `.war` file.
+        ```bash
+        mvn clean install
+        ```
+    * This will generate `baza24admin.war` inside the `target/` directory.
+
+5.  **Deploy to Tomcat:**
+    * Copy the `baza24admin.war` file from your `target/` directory.
+    * Paste it into the `webapps/` folder of your Apache Tomcat installation directory.
+    * Start the Tomcat server. The `.war` file will be automatically extracted and deployed.
+
+### Accessing the Application
+
+* Open your web browser and navigate to: `http://localhost:8080/baza24admin/`
+* You will be redirected to the admin login page.
+
+*(Note: The port `8080` may vary if you have configured Tomcat to run on a different port.)*
+
+## 📂 Project Structure
+
+The project follows a standard layered architecture for a Spring MVC application:
+
 ```
-
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+baza24admin/
+├── src/main/java/com/baza/
+│   ├── controller/ # Handles incoming HTTP requests (e.g., LoginController)
+│   ├── dao/        # Data Access Object layer for database interactions
+│   ├── model/      # Hibernate entity classes (e.g., Admin)
+│   └── service/    # Business logic layer
+├── src/main/resources/
+│   └── hibernate.cfg.xml # Hibernate & database configuration
+└── src/main/webapp/
+    ├── WEB-INF/
+    │   ├── spring-servlet.xml # Spring MVC configuration
+    │   └── views/             # JSP files for the UI (e.g., login.jsp, dashboard.jsp)
+    └── index.jsp              # Entry point that redirects to /login
 ```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
